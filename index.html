@@ -94,6 +94,7 @@
   .avatar-glow{position:absolute;width:320px;height:320px;background:radial-gradient(circle,rgba(91,124,250,.35),transparent 70%);filter:blur(10px);border-radius:50%;animation:float 6s ease-in-out infinite;}
   @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-14px);}}
   .avatar{width:250px;height:250px;border-radius:32px;background:linear-gradient(160deg,var(--surface),var(--bg-alt));border:1px solid var(--border-bright);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:70px;font-weight:700;position:relative;z-index:1;box-shadow:0 30px 80px -20px rgba(0,0,0,.6);animation:float 6s ease-in-out infinite;overflow:hidden;}
+  .avatar img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;}
   .avatar span{background:linear-gradient(120deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent;}
   .avatar small{position:absolute;bottom:-14px;font-family:var(--font-mono);font-size:10.5px;color:var(--text-dim);background:var(--bg);padding:4px 12px;border:1px solid var(--border-bright);border-radius:100px;white-space:nowrap;}
 
@@ -114,7 +115,8 @@
   .about-pic-wrap{display:flex;justify-content:center;position:relative;}
   .about-ring{position:absolute;width:280px;height:280px;border-radius:50%;border:2px solid transparent;border-top-color:var(--accent);border-right-color:var(--accent-2);animation:spin 6s linear infinite;}
   @keyframes spin{to{transform:rotate(360deg);}}
-  .about-pic{width:230px;height:230px;border-radius:50%;background:linear-gradient(160deg,var(--surface),var(--bg-alt));border:1px solid var(--border-bright);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:60px;font-weight:700;position:relative;z-index:1;box-shadow:0 0 60px -12px rgba(91,124,250,.4);animation:float 5s ease-in-out infinite;}
+  .about-pic{width:230px;height:230px;border-radius:50%;background:linear-gradient(160deg,var(--surface),var(--bg-alt));border:1px solid var(--border-bright);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:60px;font-weight:700;position:relative;z-index:1;box-shadow:0 0 60px -12px rgba(91,124,250,.4);animation:float 5s ease-in-out infinite;overflow:hidden;}
+  .about-pic img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;}
   .about-pic span{background:linear-gradient(120deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent;}
   .about-text p{color:var(--text-muted);margin-bottom:18px;font-size:15.5px;}
   .about-text strong{color:var(--text);font-weight:600;}
@@ -135,7 +137,8 @@
   @media (max-width:600px){.cert-grid{grid-template-columns:1fr;}}
   .cert-card{overflow:hidden;transition:border-color .2s,transform .2s;}
   .cert-card:hover{border-color:var(--border-bright);transform:translateY(-4px);}
-  .cert-thumb{height:150px;background:linear-gradient(135deg,rgba(91,124,250,.10),rgba(155,140,250,.06));display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:11.5px;color:var(--text-dim);border-bottom:1px solid var(--border);text-align:center;padding:10px;}
+  .cert-thumb{height:150px;background:linear-gradient(135deg,rgba(91,124,250,.10),rgba(155,140,250,.06));display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:11.5px;color:var(--text-dim);border-bottom:1px solid var(--border);text-align:center;padding:10px;overflow:hidden;}
+  .cert-thumb img{width:100%;height:100%;object-fit:contain;object-position:center;display:block;}
   .cert-body{padding:20px 22px;}
   .cert-body h3{font-family:var(--font-display);font-size:16px;margin-bottom:6px;font-weight:600;}
   .badge{display:inline-block;font-size:11px;font-weight:600;padding:5px 12px;border-radius:100px;margin-top:8px;}
@@ -186,13 +189,27 @@
   footer .mono{font-size:12.5px;color:var(--text-dim);}
 
   @media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important;}}
+
+  /* ---------- CERTIFICATION MODAL ---------- */
+  .cert-card{cursor:pointer;}
+  .cert-modal{position:fixed;inset:0;background:rgba(4,7,15,.86);backdrop-filter:blur(12px);z-index:300;display:none;align-items:center;justify-content:center;padding:28px;}
+  .cert-modal.open{display:flex;}
+  .cert-modal-box{width:min(980px,96vw);max-height:92vh;overflow:auto;background:var(--surface);border:1px solid var(--border-bright);border-radius:20px;box-shadow:0 30px 100px rgba(0,0,0,.65);padding:24px;position:relative;}
+  .cert-modal-close{position:absolute;right:18px;top:16px;width:38px;height:38px;border:1px solid var(--border-bright);border-radius:50%;background:rgba(255,255,255,.06);color:var(--text);font-size:22px;cursor:pointer;z-index:2;}
+  .cert-modal-image{width:100%;max-height:62vh;object-fit:contain;display:block;border-radius:12px;background:var(--bg-alt);border:1px solid var(--border);}
+  .cert-modal-title{font-family:var(--font-display);font-size:24px;font-weight:700;margin-top:20px;}
+  .cert-details{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:16px;}
+  .cert-detail{padding:14px 16px;background:var(--surface-glass);border:1px solid var(--border);border-radius:12px;}
+  .cert-detail .label{display:block;font-family:var(--font-mono);font-size:11px;color:var(--text-dim);margin-bottom:4px;}
+  .cert-detail .value{font-size:14px;color:var(--text);font-weight:500;}
+  @media(max-width:600px){.cert-modal{padding:12px}.cert-modal-box{padding:16px}.cert-details{grid-template-columns:1fr}.cert-modal-image{max-height:55vh;}}
 </style>
 </head>
 <body>
 
 <header>
   <nav class="wrap">
-    <div class="logo">Your<span>Name</span></div>
+    <div class="logo">Tahir<span>Mehdi</span></div>
     <div class="navlinks" id="navlinks">
       <a href="#home">Home</a>
       <a href="#about">About</a>
@@ -216,7 +233,7 @@
       <div class="hero-role">Aspiring Cybersecurity Professional | Networking Enthusiast | CCNA in Progress</div>
       <p class="hero-sub">BSCS student building a strong foundation in networking through CCNA, with a focused path toward penetration testing, network security, and ethical hacking.</p>
       <div class="cta-row">
-        <a href="#" class="btn btn-primary">Download CV</a>
+        <a href="TahirMehdi.pdf" class="btn btn-primary">Download CV</a>
         <a href="#contact" class="btn btn-ghost">Contact Me</a>
       </div>
       <div class="social-row">
@@ -230,7 +247,7 @@
 
     <div class="avatar-wrap">
       <div class="avatar-glow"></div>
-      <div class="avatar"><span>YN</span><small>add your photo here</small></div>
+      <div class="avatar"><img src="My pic.png" alt="Tahir Mehdi"><small> </small></div>
     </div>
   </div>
 </section>
@@ -241,7 +258,7 @@
     <div class="about-grid">
       <div class="about-pic-wrap">
         <div class="about-ring"></div>
-        <div class="about-pic"><span>YN</span></div>
+        <div class="about-pic"><img src="My pic.png" alt="Tahir Mehdi"></div>
       </div>
       <div class="about-text">
         <div class="sec-eyebrow">About Me</div>
@@ -281,22 +298,66 @@
       <h2 class="sec-title">Currently stacking credentials.</h2>
       <p class="sec-desc">Replace each thumbnail below with your real certificate screenshot or PDF export.</p>
     </div>
+    <!-- EASY EDIT: On each cert-card, change data-offered="..." and data-date="..." -->
     <div class="cert-grid">
-      <div class="cert-card card">
-        <div class="cert-thumb">📄 certificate image<br>(replace this block)</div>
+      <div class="cert-card card" data-cert="networking" data-offered="Cisco Networking Academy" data-date="14 Feb 2026">
+        <div class="cert-thumb"><img src="Networking Basics.jpg" alt="Networking Basics"></div>
+        <div class="cert-body"><h3>Networking Basics</h3><span class="badge badge-progress">Completed</span></div>
+      </div>
+      <div class="cert-card card" data-cert="networking" data-offered="Cisco Networking Academy" data-date="14 Feb 2026">
+        <div class="cert-thumb"><img src="Introduction to Cybersecurity.jpg" alt="Networking Basics"></div>
+        <div class="cert-body"><h3>Introduction to Cybersecurity</h3><span class="badge badge-progress">Completed</span></div>
+      </div>
+      <div class="cert-card card" data-cert="networking" data-offered="Cisco Networking Academy" data-date="20 Aug 2025">
+        <div class="cert-thumb"><img src="Python Essentials.jpg" alt="Networking Basics"></div>
+        <div class="cert-body"><h3>Python Essentials 1</h3><span class="badge badge-progress">Completed</span></div>
+      </div>
+      <div class="cert-card card" data-cert="ccna" data-offered="Cisco" data-date="In Progress">
+        <div class="cert-thumb"><img src="cert-2.jpg" alt="CCNA"></div>
         <div class="cert-body"><h3>CCNA</h3><span class="badge badge-progress">In Progress</span></div>
       </div>
-      <div class="cert-card card">
-        <div class="cert-thumb">📄 certificate image<br>(replace this block)</div>
+      <div class="cert-card card" data-cert="ccnp" data-offered="Cisco" data-date="Planned">
+        <div class="cert-thumb"><img src="cert-3.jpg" alt="CCNP"></div>
+        <div class="cert-body"><h3>CCNP</h3><span class="badge badge-planned">Planned</span></div>
+      </div>
+      <div class="cert-card card" data-cert="securityplus" data-offered="CompTIA" data-date="Planned">
+        <div class="cert-thumb"><img src="cert-4.jpg" alt="CompTIA Security+"></div>
         <div class="cert-body"><h3>CompTIA Security+</h3><span class="badge badge-planned">Planned</span></div>
       </div>
-      <div class="cert-card card">
-        <div class="cert-thumb">📄 certificate image<br>(replace this block)</div>
-        <div class="cert-body"><h3>eJPT / CEH</h3><span class="badge badge-planned">Planned</span></div>
+      <div class="cert-card card" data-cert="lfcs" data-offered="Linux Foundation" data-date="Planned">
+        <div class="cert-thumb"><img src="cert-5.jpg" alt="Linux/LFCS"></div>
+        <div class="cert-body"><h3>Linux/LFCS</h3><span class="badge badge-planned">Planned</span></div>
+      </div>
+      <div class="cert-card card" data-cert="btl1" data-offered="Security Blue Team" data-date="Planned">
+        <div class="cert-thumb"><img src="cert-6.jpg" alt="BTL1"></div>
+        <div class="cert-body"><h3>BTL1</h3><span class="badge badge-planned">Planned</span></div>
+      </div>
+      <div class="cert-card card" data-cert="sc200" data-offered="Microsoft" data-date="Planned">
+        <div class="cert-thumb"><img src="cert-7.jpg" alt="SC-200"></div>
+        <div class="cert-body"><h3>SC-200</h3><span class="badge badge-planned">Planned</span></div>
+      </div>
+      <div class="cert-card card" data-cert="splunkwazuh" data-offered="Practical / Lab" data-date="Planned">
+        <div class="cert-thumb"><img src="cert-8.jpg" alt="Practical Splunk/Wazuh"></div>
+        <div class="cert-body"><h3>Practical Splunk/Wazuh</h3><span class="badge badge-planned">Planned</span></div>
       </div>
     </div>
   </div>
 </section>
+
+<!-- ================= CERTIFICATION MODAL ================= -->
+<div class="cert-modal" id="certModal" aria-hidden="true">
+  <div class="cert-modal-box" role="dialog" aria-modal="true">
+    <button class="cert-modal-close" id="certModalClose" aria-label="Close">×</button>
+    <img class="cert-modal-image" id="certModalImage" src="" alt="">
+    <h3 class="cert-modal-title" id="certModalTitle"></h3>
+    <div class="cert-details">
+      <div class="cert-detail"><span class="label">Offered by</span><span class="value" id="certOfferedBy"></span></div>
+      <div class="cert-detail"><span class="label">Completion Date</span><span class="value" id="certDate"></span></div>
+      <div class="cert-detail"><span class="label">Credential / Status</span><span class="value" id="certStatus"></span></div>
+      <div class="cert-detail"><span class="label">Description</span><span class="value" id="certDescription"></span></div>
+    </div>
+  </div>
+</div>
 
 <!-- ================= INTERNSHIPS ================= -->
 <section id="internships">
@@ -376,9 +437,9 @@
       <h2>Let's connect — open to internships, CTF teams, and networking/security roles.</h2>
       <p>Whether it's a lab collaboration, an opportunity, or just a networking conversation — reach out.</p>
       <div class="contact-links">
-        <a href="mailto:you@example.com" class="btn btn-primary">Email Me</a>
-        <a href="https://github.com/yourusername" class="btn btn-ghost">GitHub</a>
-        <a href="https://linkedin.com/in/yourusername" class="btn btn-ghost">LinkedIn</a>
+        <a href="mailto:tahirmehdi001@gmail.com" class="btn btn-primary">Email Me</a>
+        <a href="https://github.com/tahirmehdi001-cyberexpert" class="btn btn-ghost">GitHub</a>
+        <a href="https://www.linkedin.com/in/tahirmehdi18/" class="btn btn-ghost">LinkedIn</a>
       </div>
     </div>
   </div>
@@ -386,7 +447,7 @@
 
 <footer>
   <div class="wrap">
-    <div class="mono">© 2026 Your Name. Built with HTML/CSS, hosted on GitHub Pages.</div>
+    <div class="mono">© 2026 Tahir Mehdi. Built with HTML/CSS, hosted on GitHub Pages.</div>
     <div class="mono">Status: <span style="color:var(--accent-2)">Available</span></div>
   </div>
 </footer>
@@ -402,6 +463,53 @@
     links.classList.remove('open');
     toggle.setAttribute('aria-expanded', 'false');
   }));
+
+  const certData = {
+    networking:{title:'Networking Basics',image:'Networking Basics.jpg',offered:'Cisco Networking Academy',date:'Add completion date',status:'Completed',description:'Networking fundamentals and core networking concepts.'},
+    ccna:{title:'CCNA',image:'cert-2.jpg',offered:'Cisco',date:'In Progress',status:'In Progress',description:'Routing, switching, IP addressing and networking fundamentals.'},
+    ccnp:{title:'CCNP',image:'cert-3.jpg',offered:'Cisco',date:'Planned',status:'Planned',description:'Advanced enterprise networking certification path.'},
+    securityplus:{title:'CompTIA Security+',image:'cert-4.jpg',offered:'CompTIA',date:'Planned',status:'Planned',description:'Core cybersecurity concepts and security fundamentals.'},
+    lfcs:{title:'Linux/LFCS',image:'cert-5.jpg',offered:'Linux Foundation',date:'Planned',status:'Planned',description:'Linux system administration and practical Linux skills.'},
+    btl1:{title:'BTL1',image:'cert-6.jpg',offered:'Security Blue Team',date:'Planned',status:'Planned',description:'Blue-team and practical defensive security skills.'},
+    sc200:{title:'SC-200',image:'cert-7.jpg',offered:'Microsoft',date:'Planned',status:'Planned',description:'Security operations and Microsoft security monitoring.'},
+    splunkwazuh:{title:'Practical Splunk/Wazuh',image:'cert-8.jpg',offered:'Practical / Lab',date:'Planned',status:'Planned',description:'Hands-on SIEM, log monitoring and security operations practice.'}
+  };
+
+  const certModal=document.getElementById('certModal');
+  const certModalImage=document.getElementById('certModalImage');
+  const certModalTitle=document.getElementById('certModalTitle');
+  const certOfferedBy=document.getElementById('certOfferedBy');
+  const certDate=document.getElementById('certDate');
+  const certStatus=document.getElementById('certStatus');
+  const certDescription=document.getElementById('certDescription');
+
+  document.querySelectorAll('.cert-card').forEach(card=>{
+    card.addEventListener('click',()=>{
+      const d=certData[card.dataset.cert];
+      if(!d) return;
+      certModalImage.src=d.image;
+      certModalImage.alt=d.title;
+      certModalTitle.textContent=d.title;
+      // Edit these directly on each cert-card: data-offered="..." and data-date="..."
+       certOfferedBy.textContent=card.dataset.offered || 'Add offered by';
+       certDate.textContent=card.dataset.date || 'Add completion date';
+      certStatus.textContent=d.status;
+      certDescription.textContent=d.description;
+      certModal.classList.add('open');
+      certModal.setAttribute('aria-hidden','false');
+      document.body.style.overflow='hidden';
+    });
+  });
+
+  function closeCertModal(){
+    certModal.classList.remove('open');
+    certModal.setAttribute('aria-hidden','true');
+    document.body.style.overflow='';
+  }
+  document.getElementById('certModalClose').addEventListener('click',closeCertModal);
+  certModal.addEventListener('click',e=>{if(e.target===certModal) closeCertModal();});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape') closeCertModal();});
+
 </script>
 
 </body>
