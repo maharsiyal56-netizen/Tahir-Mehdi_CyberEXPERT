@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tahir Mehdi</title>
+<meta name="description" content="Portfolio of a BSCS student specializing in networking, CCNA, and cybersecurity fundamentals.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0e1a;
+    --bg-alt:#0d1220;
+    --surface:#111827;
+    --surface-glass:rgba(255,255,255,.035);
+    --border:rgba(255,255,255,.08);
+    --border-bright:rgba(255,255,255,.16);
+    --text:#eef1f8;
+    --text-muted:#93a0b8;
+    --text-dim:#5c6882;
+    --accent:#5b7cfa;
+    --accent-2:#9b8cfa;
+    --accent-soft:rgba(91,124,250,.12);
+    --gold:#f0b94d;
+    --gold-soft:rgba(240,185,77,.12);
+    --font-display:'Outfit',sans-serif;
+    --font-body:'Inter',sans-serif;
+    --font-mono:'JetBrains Mono',monospace;
+    --maxw:1120px;
+    --radius:16px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(ellipse 900px 500px at 15% -10%, rgba(91,124,250,.16), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 100% 10%, rgba(155,140,250,.10), transparent 55%),
+      var(--bg);
+    color:var(--text);font-family:var(--font-body);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+  .mono{font-family:var(--font-mono);}
+  ::selection{background:var(--accent);color:#fff;}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px;}
+
+  /* ---------- NAV ---------- */
+  header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,14,26,.72);backdrop-filter:blur(16px) saturate(140%);border-bottom:1px solid var(--border);}
+  nav.wrap{display:flex;align-items:center;justify-content:space-between;height:72px;}
+  .logo{font-family:var(--font-display);font-weight:700;font-size:18px;letter-spacing:-.01em;}
+  .logo span{background:linear-gradient(120deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .navlinks{display:flex;gap:24px;font-size:13.5px;color:var(--text-muted);align-items:center;font-weight:500;}
+  .navlinks a{transition:color .2s;white-space:nowrap;}
+  .navlinks a:hover{color:var(--text);}
+  .nav-cta{background:var(--text);color:var(--bg)!important;padding:10px 20px;border-radius:100px;font-weight:600;font-size:13px;}
+  .nav-cta:hover{opacity:.88;}
+  .navtoggle{display:none;background:none;border:1px solid var(--border-bright);color:var(--text);width:40px;height:40px;border-radius:10px;cursor:pointer;font-size:18px;}
+  @media (max-width:1000px){
+    .navlinks{position:absolute;top:72px;left:0;right:0;background:var(--bg-alt);border-bottom:1px solid var(--border);flex-direction:column;align-items:flex-start;gap:0;padding:10px 0;display:none;max-height:80vh;overflow-y:auto;}
+    .navlinks.open{display:flex;}
+    .navlinks a{padding:14px 24px;width:100%;border-bottom:1px solid var(--border);}
+    .nav-cta{margin:14px 24px;display:inline-block;}
+    .navtoggle{display:block;}
+  }
+
+  /* ---------- HERO / HOME ---------- */
+  .hero{position:relative;padding:168px 0 100px;}
+  .hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center;}
+  @media (max-width:900px){.hero .wrap{grid-template-columns:1fr;text-align:center;}}
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:600;color:var(--accent-2);background:var(--accent-soft);border:1px solid rgba(91,124,250,.28);padding:8px 16px;border-radius:100px;margin-bottom:26px;}
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--accent-2);box-shadow:0 0 10px var(--accent-2);animation:pulse 2s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.35;}}
+  h1{font-family:var(--font-display);font-weight:700;font-size:clamp(34px,4.6vw,56px);line-height:1.08;letter-spacing:-.02em;}
+  h1 .accent{background:linear-gradient(120deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .hero-role{font-size:17px;color:var(--gold);margin-top:18px;font-weight:600;}
+  .hero-sub{margin-top:18px;font-size:16.5px;color:var(--text-muted);max-width:520px;}
+  @media (max-width:900px){.hero-sub{margin-left:auto;margin-right:auto;}}
+  .cta-row{display:flex;gap:14px;margin-top:36px;flex-wrap:wrap;}
+  @media (max-width:900px){.cta-row{justify-content:center;}}
+  .btn{font-size:14.5px;font-weight:600;padding:14px 26px;border-radius:100px;display:inline-flex;align-items:center;gap:8px;transition:transform .18s,box-shadow .18s,border-color .18s,background .18s;}
+  .btn-primary{background:linear-gradient(120deg,var(--accent),var(--accent-2));color:#fff;box-shadow:0 10px 30px -10px rgba(91,124,250,.5);}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 36px -8px rgba(91,124,250,.65);}
+  .btn-ghost{border:1px solid var(--border-bright);color:var(--text);background:var(--surface-glass);}
+  .btn-ghost:hover{border-color:var(--accent);background:var(--accent-soft);}
+  .social-row{display:flex;gap:12px;margin-top:32px;flex-wrap:wrap;}
+  @media (max-width:900px){.social-row{justify-content:center;}}
+  .social-row a{width:44px;height:44px;border:1px solid var(--border-bright);border-radius:12px;display:flex;align-items:center;justify-content:center;transition:border-color .2s,transform .2s,background .2s;color:var(--text-muted);background:var(--surface-glass);}
+  .social-row a:hover{border-color:var(--accent);color:var(--accent-2);transform:translateY(-2px);}
+  .social-row svg{width:18px;height:18px;}
+  .social-label{font-size:11.5px;color:var(--text-dim);margin-top:10px;font-family:var(--font-mono);}
+
+  .avatar-wrap{display:flex;justify-content:center;position:relative;}
+  .avatar-glow{position:absolute;width:320px;height:320px;background:radial-gradient(circle,rgba(91,124,250,.35),transparent 70%);filter:blur(10px);border-radius:50%;animation:float 6s ease-in-out infinite;}
+  @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-14px);}}
+  .avatar{width:250px;height:250px;border-radius:32px;background:linear-gradient(160deg,var(--surface),var(--bg-alt));border:1px solid var(--border-bright);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:70px;font-weight:700;position:relative;z-index:1;box-shadow:0 30px 80px -20px rgba(0,0,0,.6);animation:float 6s ease-in-out infinite;overflow:hidden;}
+  .avatar span{background:linear-gradient(120deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .avatar small{position:absolute;bottom:-14px;font-family:var(--font-mono);font-size:10.5px;color:var(--text-dim);background:var(--bg);padding:4px 12px;border:1px solid var(--border-bright);border-radius:100px;white-space:nowrap;}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:96px 0;border-top:1px solid var(--border);}
+  .hero{border-top:none;}
+  .sec-head{margin-bottom:48px;}
+  .sec-eyebrow{font-size:13px;font-weight:600;color:var(--accent-2);letter-spacing:.03em;margin-bottom:12px;text-transform:uppercase;}
+  .sec-title{font-family:var(--font-display);font-weight:700;font-size:clamp(26px,3.3vw,38px);letter-spacing:-.01em;}
+  .sec-desc{color:var(--text-muted);margin-top:14px;max-width:600px;font-size:15.5px;}
+  .center{text-align:center;}
+  .center .sec-desc{margin-left:auto;margin-right:auto;}
+  .card{background:var(--surface-glass);border:1px solid var(--border);border-radius:var(--radius);backdrop-filter:blur(6px);}
+
+  /* ---------- ABOUT (with animated pic) ---------- */
+  .about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:center;}
+  @media (max-width:900px){.about-grid{grid-template-columns:1fr;}}
+  .about-pic-wrap{display:flex;justify-content:center;position:relative;}
+  .about-ring{position:absolute;width:280px;height:280px;border-radius:50%;border:2px solid transparent;border-top-color:var(--accent);border-right-color:var(--accent-2);animation:spin 6s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .about-pic{width:230px;height:230px;border-radius:50%;background:linear-gradient(160deg,var(--surface),var(--bg-alt));border:1px solid var(--border-bright);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:60px;font-weight:700;position:relative;z-index:1;box-shadow:0 0 60px -12px rgba(91,124,250,.4);animation:float 5s ease-in-out infinite;}
+  .about-pic span{background:linear-gradient(120deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .about-text p{color:var(--text-muted);margin-bottom:18px;font-size:15.5px;}
+  .about-text strong{color:var(--text);font-weight:600;}
+
+  /* ---------- SERVICES ---------- */
+  .service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  @media (max-width:900px){.service-grid{grid-template-columns:1fr 1fr;}}
+  @media (max-width:600px){.service-grid{grid-template-columns:1fr;}}
+  .service-card{padding:28px 24px;transition:border-color .2s,transform .2s,background .2s;}
+  .service-card:hover{border-color:var(--border-bright);transform:translateY(-4px);background:rgba(255,255,255,.05);}
+  .service-card .icon{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--accent-soft),var(--gold-soft));display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:18px;}
+  .service-card h3{font-family:var(--font-display);font-size:17px;margin-bottom:9px;font-weight:600;}
+  .service-card p{color:var(--text-muted);font-size:13.5px;}
+
+  /* ---------- CERTIFICATIONS (with image) ---------- */
+  .cert-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  @media (max-width:900px){.cert-grid{grid-template-columns:1fr 1fr;}}
+  @media (max-width:600px){.cert-grid{grid-template-columns:1fr;}}
+  .cert-card{overflow:hidden;transition:border-color .2s,transform .2s;}
+  .cert-card:hover{border-color:var(--border-bright);transform:translateY(-4px);}
+  .cert-thumb{height:150px;background:linear-gradient(135deg,rgba(91,124,250,.10),rgba(155,140,250,.06));display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:11.5px;color:var(--text-dim);border-bottom:1px solid var(--border);text-align:center;padding:10px;}
+  .cert-body{padding:20px 22px;}
+  .cert-body h3{font-family:var(--font-display);font-size:16px;margin-bottom:6px;font-weight:600;}
+  .badge{display:inline-block;font-size:11px;font-weight:600;padding:5px 12px;border-radius:100px;margin-top:8px;}
+  .badge-progress{background:var(--gold-soft);color:var(--gold);border:1px solid rgba(240,185,77,.32);}
+  .badge-planned{background:rgba(255,255,255,.05);color:var(--text-dim);border:1px solid var(--border-bright);}
+  .badge-done{background:var(--accent-soft);color:var(--accent-2);border:1px solid rgba(91,124,250,.32);}
+
+  /* ---------- INTERNSHIPS (timeline) ---------- */
+  .timeline{position:relative;padding-left:32px;}
+  .timeline::before{content:'';position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--accent),var(--accent-2));opacity:.35;}
+  .t-item{position:relative;padding-bottom:38px;}
+  .t-item:last-child{padding-bottom:0;}
+  .t-item::before{content:'';position:absolute;left:-32px;top:4px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:2px solid var(--accent-2);box-shadow:0 0 0 4px rgba(155,140,250,.12);}
+  .t-date{font-family:var(--font-mono);font-size:12px;color:var(--text-dim);margin-bottom:6px;}
+  .t-title{font-family:var(--font-display);font-weight:600;font-size:18px;}
+  .t-org{font-size:13.5px;color:var(--gold);margin-top:3px;font-weight:500;}
+  .t-desc{color:var(--text-muted);font-size:14.5px;margin-top:9px;max-width:580px;}
+
+  /* ---------- CTFs ---------- */
+  .ctf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  @media (max-width:900px){.ctf-grid{grid-template-columns:1fr 1fr;}}
+  @media (max-width:600px){.ctf-grid{grid-template-columns:1fr;}}
+  .ctf-card{padding:24px;transition:border-color .2s,transform .2s;}
+  .ctf-card:hover{border-color:var(--border-bright);transform:translateY(-4px);}
+  .ctf-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:10px;}
+  .ctf-plat{font-family:var(--font-mono);font-size:11px;color:var(--text-dim);}
+  .ctf-card h3{font-family:var(--font-display);font-size:16px;margin-bottom:8px;font-weight:600;}
+  .ctf-card p{color:var(--text-muted);font-size:13.5px;}
+
+  /* ---------- BADGES ---------- */
+  .badge-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+  @media (max-width:900px){.badge-grid{grid-template-columns:repeat(3,1fr);}}
+  @media (max-width:600px){.badge-grid{grid-template-columns:repeat(2,1fr);}}
+  .badge-tile{padding:22px 14px;text-align:center;transition:border-color .2s,transform .2s;}
+  .badge-tile:hover{border-color:var(--border-bright);transform:translateY(-4px);}
+  .badge-icon{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--accent-soft),var(--gold-soft));margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:22px;}
+  .badge-tile .name{font-size:12.5px;font-weight:600;}
+  .badge-tile .plat{font-family:var(--font-mono);font-size:10.5px;color:var(--text-dim);margin-top:4px;}
+
+  /* ---------- CONTACT ---------- */
+  .contact-wrap{padding:56px 44px;text-align:center;background:linear-gradient(160deg,rgba(91,124,250,.10),rgba(155,140,250,.05));}
+  .contact-wrap h2{font-family:var(--font-display);font-weight:700;font-size:clamp(24px,3vw,34px);max-width:600px;margin:0 auto 16px;letter-spacing:-.01em;}
+  .contact-wrap p{color:var(--text-muted);max-width:480px;margin:0 auto;font-size:15.5px;}
+  .contact-links{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px;justify-content:center;}
+
+  footer{padding:36px 0;border-top:1px solid var(--border);}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+  footer .mono{font-size:12.5px;color:var(--text-dim);}
+
+  @media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important;}}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="logo">Your<span>Name</span></div>
+    <div class="navlinks" id="navlinks">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#certs">Certifications</a>
+      <a href="#internships">Internships</a>
+      <a href="#ctfs">CTFs</a>
+      <a href="#badges">Badges</a>
+      <a href="#contact" class="nav-cta">Contact</a>
+    </div>
+    <button class="navtoggle" id="navtoggle" aria-label="Toggle menu" aria-expanded="false">≡</button>
+  </nav>
+</header>
+
+<!-- ================= HOME ================= -->
+<section id="home" class="hero">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow"><span class="dot"></span> Open to internships &amp; opportunities</div>
+      <h1>Hey, I'm <span class="accent">Tahir Mehdi</span></h1>
+      <div class="hero-role">Aspiring Cybersecurity Professional | Networking Enthusiast | CCNA in Progress</div>
+      <p class="hero-sub">BSCS student building a strong foundation in networking through CCNA, with a focused path toward penetration testing, network security, and ethical hacking.</p>
+      <div class="cta-row">
+        <a href="#" class="btn btn-primary">Download CV</a>
+        <a href="#contact" class="btn btn-ghost">Contact Me</a>
+      </div>
+      <div class="social-row">
+        <a href="https://github.com/tahirmehdi001-cyberexpert" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.6.5.5 5.6.5 12c0 5.1 3.3 9.4 7.9 11 .6.1.8-.3.8-.6v-2.2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.4 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.4 11.4 0 016 0C17.3 5.4 18.3 5.7 18.3 5.7c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.9 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.6 7.9-5.9 7.9-11C23.5 5.6 18.4.5 12 .5z"/></svg></a>
+        <a href="https://www.linkedin.com/in/tahirmehdi18/" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.4 20.4h-3.5v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9v5.7H9.4V9h3.4v1.6h.05c.5-.9 1.6-1.9 3.3-1.9 3.6 0 4.2 2.4 4.2 5.4v6.3zM5.3 7.4a2 2 0 110-4 2 2 0 010 4zM7 20.4H3.6V9H7v11.4z"/></svg></a>
+        <a href="https://tryhackme.com/p/tahirmehdi001" aria-label="TryHackMe"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l9 4.5v11L12 22l-9-4.5v-11L12 2zm0 2.2L5 7.5v9l7 3.5 7-3.5v-9l-7-3.3zM12 7a5 5 0 100 10 5 5 0 000-10z"/></svg></a>
+        <a href="https://profile.hackthebox.com/dashboard" aria-label="Hack The Box"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.5l8.5 4.9v11.2L12 22.5l-8.5-4.9V6.4L12 1.5zm0 2.3L5.5 7.5v9l6.5 3.7 6.5-3.7v-9L12 3.8zM12 8a4 4 0 110 8 4 4 0 010-8z"/></svg></a>
+      </div>
+      <div class="social-label">GitHub · LinkedIn · TryHackMe · Hack The Box</div>
+    </div>
+
+    <div class="avatar-wrap">
+      <div class="avatar-glow"></div>
+      <div class="avatar"><span>YN</span><small>add your photo here</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABOUT (animated pic) ================= -->
+<section id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-pic-wrap">
+        <div class="about-ring"></div>
+        <div class="about-pic"><span>YN</span></div>
+      </div>
+      <div class="about-text">
+        <div class="sec-eyebrow">About Me</div>
+        <h2 class="sec-title" style="margin-bottom:22px;">Foundations first, offense next.</h2>
+        <p>I'm a <strong>BSCS student</strong> with a strong pull toward how networks are built, defended, and — eventually — tested for weakness. I'm currently working through <strong>CCNA</strong> to make sure my grasp of routing, switching, and IP fundamentals is solid before going further into security.</p>
+        <p>Alongside coursework, I build and break things in <strong>Cisco Packet Tracer, GNS3, and virtual lab environments</strong> — simulating topologies, configuring devices, and practicing the troubleshooting instincts security work depends on.</p>
+        <p>The long-term goal: a career in <strong>penetration testing and network security</strong>, built on real hands-on skill rather than just theory.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">Services</div>
+      <h2 class="sec-title">How I can help.</h2>
+      <p class="sec-desc">Student-level support I'm equipped to offer right now — edit these to match what you're actually confident doing.</p>
+    </div>
+    <div class="service-grid">
+      <div class="service-card card"><div class="icon">🌐</div><h3>Network Setup &amp; Troubleshooting</h3><p>Designing and fixing small network topologies — VLANs, routing, and basic device configuration.</p></div>
+      <div class="service-card card"><div class="icon">🛡</div><h3>Basic Security Assessments</h3><p>Running Nmap/Wireshark-based recon on systems you own or have permission to test.</p></div>
+      <div class="service-card card"><div class="icon">🎓</div><h3>Security Awareness Guidance</h3><p>Explaining core security hygiene and best practices in simple, practical terms.</p></div>
+      <div class="service-card card"><div class="icon">🧩</div><h3>CTF Collaboration</h3><p>Teaming up on Capture The Flag challenges — recon, enumeration, and write-ups.</p></div>
+      <div class="service-card card"><div class="icon">🖥</div><h3>Lab Environment Setup</h3><p>Building Packet Tracer / GNS3 / virtual lab environments for learning or demos.</p></div>
+      <div class="service-card card"><div class="icon">📄</div><h3>Documentation &amp; Reporting</h3><p>Writing clear lab reports and walkthroughs for networking and security exercises.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CERTIFICATIONS (with image) ================= -->
+<section id="certs">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">Certifications</div>
+      <h2 class="sec-title">Currently stacking credentials.</h2>
+      <p class="sec-desc">Replace each thumbnail below with your real certificate screenshot or PDF export.</p>
+    </div>
+    <div class="cert-grid">
+      <div class="cert-card card">
+        <div class="cert-thumb">📄 certificate image<br>(replace this block)</div>
+        <div class="cert-body"><h3>CCNA</h3><span class="badge badge-progress">In Progress</span></div>
+      </div>
+      <div class="cert-card card">
+        <div class="cert-thumb">📄 certificate image<br>(replace this block)</div>
+        <div class="cert-body"><h3>CompTIA Security+</h3><span class="badge badge-planned">Planned</span></div>
+      </div>
+      <div class="cert-card card">
+        <div class="cert-thumb">📄 certificate image<br>(replace this block)</div>
+        <div class="cert-body"><h3>eJPT / CEH</h3><span class="badge badge-planned">Planned</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= INTERNSHIPS ================= -->
+<section id="internships">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">Internships</div>
+      <h2 class="sec-title">Real-world exposure.</h2>
+      <p class="sec-desc">Add your internships here as you take them on.</p>
+    </div>
+    <div class="timeline">
+      <div class="t-item">
+        <div class="t-date">Add dates</div>
+        <div class="t-title">Internship Title</div>
+        <div class="t-org">Company / Organization Name</div>
+        <div class="t-desc">Short description of what you worked on, tools used, and what you learned.</div>
+      </div>
+      <div class="t-item">
+        <div class="t-date">Add dates</div>
+        <div class="t-title">Internship Title</div>
+        <div class="t-org">Company / Organization Name</div>
+        <div class="t-desc">Short description of what you worked on, tools used, and what you learned.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTFs ================= -->
+<section id="ctfs">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">CTFs</div>
+      <h2 class="sec-title">Capture The Flag practice.</h2>
+      <p class="sec-desc">Rooms and machines you've worked through — swap in your real progress.</p>
+    </div>
+    <div class="ctf-grid">
+      <div class="ctf-card card">
+        <div class="ctf-top"><span class="ctf-plat">TRYHACKME</span><span class="badge badge-done">Completed</span></div>
+        <h3>Room Name</h3>
+        <p>Short note on what the room covered — e.g. recon, privilege escalation, web exploitation.</p>
+      </div>
+      <div class="ctf-card card">
+        <div class="ctf-top"><span class="ctf-plat">HACK THE BOX</span><span class="badge badge-progress">In Progress</span></div>
+        <h3>Machine Name</h3>
+        <p>Short note on what the machine covered and current progress.</p>
+      </div>
+      <div class="ctf-card card">
+        <div class="ctf-top"><span class="ctf-plat">TRYHACKME</span><span class="badge badge-planned">Planned</span></div>
+        <h3>Room Name</h3>
+        <p>Add more rooms/machines as you complete them.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BADGES ================= -->
+<section id="badges">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">My Badges</div>
+      <h2 class="sec-title">Earned across platforms.</h2>
+      <p class="sec-desc">Replace these icons with real badge images from TryHackMe, HTB, or elsewhere.</p>
+    </div>
+    <div class="badge-grid">
+      <div class="badge-tile card"><div class="badge-icon">🏅</div><div class="name">Badge Name</div><div class="plat">TryHackMe</div></div>
+      <div class="badge-tile card"><div class="badge-icon">🏅</div><div class="name">Badge Name</div><div class="plat">Hack The Box</div></div>
+      <div class="badge-tile card"><div class="badge-icon">🏅</div><div class="name">Badge Name</div><div class="plat">TryHackMe</div></div>
+      <div class="badge-tile card"><div class="badge-icon">🏅</div><div class="name">Badge Name</div><div class="plat">Hack The Box</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-wrap card">
+      <div class="sec-eyebrow center">Contact</div>
+      <h2>Let's connect — open to internships, CTF teams, and networking/security roles.</h2>
+      <p>Whether it's a lab collaboration, an opportunity, or just a networking conversation — reach out.</p>
+      <div class="contact-links">
+        <a href="mailto:you@example.com" class="btn btn-primary">Email Me</a>
+        <a href="https://github.com/yourusername" class="btn btn-ghost">GitHub</a>
+        <a href="https://linkedin.com/in/yourusername" class="btn btn-ghost">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="mono">© 2026 Your Name. Built with HTML/CSS, hosted on GitHub Pages.</div>
+    <div class="mono">Status: <span style="color:var(--accent-2)">Available</span></div>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('navtoggle');
+  const links = document.getElementById('navlinks');
+  toggle.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }));
+</script>
+
+</body>
+</html>
