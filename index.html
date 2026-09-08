@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tahir Mehdi</title>
-<meta name="description" content="Portfolio of a BSCS student specializing in networking, CCNA, and cybersecurity fundamentals.">
+<meta name="description" content="Portfolio of Tahir Mehdi, an ADP Computer Science student focused on networking, CCNA, CCNP, and cybersecurity.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -191,6 +191,18 @@
   @media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important;}}
 
   /* ---------- CERTIFICATION MODAL ---------- */
+  .cert-card{cursor:pointer;position:relative;outline:none;user-select:none;}
+  .cert-card:focus-visible{border-color:var(--accent);box-shadow:0 0 0 3px rgba(91,124,250,.16);}
+  .cert-card::after{content:'View details';position:absolute;right:14px;bottom:14px;font-family:var(--font-mono);font-size:10px;color:var(--text-dim);opacity:0;transition:opacity .2s;pointer-events:none;}
+  .cert-card:hover::after,.cert-card:focus-visible::after{opacity:1;}
+  .cert-thumb-placeholder{color:var(--text-muted);font-family:var(--font-mono);letter-spacing:.02em;}
+  .cert-modal[aria-hidden="true"]{pointer-events:none;}
+  .cert-modal[aria-hidden="false"]{pointer-events:auto;}
+  .cert-modal-image.hidden{display:none;}
+  .cert-modal-empty{display:none;min-height:180px;align-items:center;justify-content:center;text-align:center;color:var(--text-dim);font-family:var(--font-mono);border:1px dashed var(--border-bright);border-radius:12px;padding:30px;background:var(--bg-alt);}
+  .cert-modal-empty.show{display:flex;}
+  @media(max-width:600px){.cert-card::after{display:none;}}
+
   .cert-card{cursor:pointer;}
   .cert-modal{position:fixed;inset:0;background:rgba(4,7,15,.86);backdrop-filter:blur(12px);z-index:300;display:none;align-items:center;justify-content:center;padding:28px;}
   .cert-modal.open{display:flex;}
@@ -216,6 +228,7 @@
       <a href="#services">Services</a>
       <a href="#certs">Certifications</a>
       <a href="#internships">Internships</a>
+      <a href="#workshops">Workshops</a>
       <a href="#ctfs">CTFs</a>
       <a href="#badges">Badges</a>
       <a href="#contact" class="nav-cta">Contact</a>
@@ -230,8 +243,8 @@
     <div>
       <div class="eyebrow"><span class="dot"></span> Open to internships &amp; opportunities</div>
       <h1>Hey, I'm <span class="accent">Tahir Mehdi</span></h1>
-      <div class="hero-role">Aspiring Cybersecurity Professional | Networking Enthusiast | CCNA in Progress</div>
-      <p class="hero-sub">BSCS student building a strong foundation in networking through CCNA, with a focused path toward penetration testing, network security, and ethical hacking.</p>
+      <div class="hero-role">Aspiring Cybersecurity Professional | Networking Enthusiast | CCNA Certified | CCNP in Progress</div>
+      <p class="hero-sub">BS in Computer Science student building a strong foundation in networking through hands-on Cisco experience, with a focused path toward network security, penetration testing, and ethical hacking.</p>
       <div class="cta-row">
         <a href="TahirMehdi.pdf" class="btn btn-primary">Download CV</a>
         <a href="#contact" class="btn btn-ghost">Contact Me</a>
@@ -263,10 +276,9 @@
       <div class="about-text">
         <div class="sec-eyebrow">About Me</div>
         <h2 class="sec-title" style="margin-bottom:22px;">Foundations first, offense next.</h2>
-        <p>I'm a <strong>BSCS student</strong> with a strong pull toward how networks are built, defended, and — eventually — tested for weakness. I'm currently working through <strong>CCNA</strong> to make sure my grasp of routing, switching, and IP fundamentals is solid before going further into security.</p>
-        <p>Alongside coursework, I build and break things in <strong>Cisco Packet Tracer, GNS3, and virtual lab environments</strong> — simulating topologies, configuring devices, and practicing the troubleshooting instincts security work depends on.</p>
-        <p>The long-term goal: a career in <strong>penetration testing and network security</strong>, built on real hands-on skill rather than just theory.</p>
-      </div>
+        <p>I'm a <strong>BSCS student</strong> with a strong interest in networking and cybersecurity. I've completed my <strong>CCNA</strong> certification and am currently pursuing<strong>CCNP Security</strong> to build a strong and practical foundation in networking</p>
+        <p>At this stage, my primary focus is strengthening my networking skills through hands-on practice with <strong>Cisco Packet Tracer, GNS3, and virtual lab environments —</strong> working with network topologies, configuring routers and switches, and developing real-world troubleshooting skills.</p>
+        <p>My long-term career goal is to move into<strong>Cybersecurity, </strong>particularly<strong>Network Security and Penetration Testing.</strong> I believe a strong understanding of networking is essential for becoming a skilled cybersecurity professional, so I'm focusing on building that foundation step by step through continuous learning and practical lab experience.
     </div>
   </div>
 </section>
@@ -296,70 +308,85 @@
     <div class="sec-head">
       <div class="sec-eyebrow">Certifications</div>
       <h2 class="sec-title">Currently stacking credentials.</h2>
-      <p class="sec-desc">Replace each thumbnail below with your real certificate screenshot or PDF export.</p>
+      <p class="sec-desc">Click any certification to view its details. Completed credentials are separated from certifications that are in progress or planned.</p>
     </div>
-    <!-- EASY EDIT: On each cert-card, change data-offered="..." and data-date="..." -->
     <div class="cert-grid">
-      <div class="cert-card card" data-cert="networking" data-offered="Cisco Networking Academy" data-date="14 Feb 2026">
-        <div class="cert-thumb"><img src="Networking Basics.jpg" alt="Networking Basics"></div>
-        <div class="cert-body"><h3>Networking Basics</h3><span class="badge badge-progress">Completed</span></div>
-      </div>
-      <div class="cert-card card" data-cert="networking" data-offered="Cisco Networking Academy" data-date="14 Feb 2026">
-        <div class="cert-thumb"><img src="Introduction to Cybersecurity.jpg" alt="Networking Basics"></div>
-        <div class="cert-body"><h3>Introduction to Cybersecurity</h3><span class="badge badge-progress">Completed</span></div>
-      </div>
-      <div class="cert-card card" data-cert="networking" data-offered="Cisco Networking Academy" data-date="20 Aug 2025">
-        <div class="cert-thumb"><img src="Python Essentials.jpg" alt="Networking Basics"></div>
-        <div class="cert-body"><h3>Python Essentials 1</h3><span class="badge badge-progress">Completed</span></div>
-      </div>
-      <div class="cert-card card" data-cert="ccna" data-offered="Cisco" data-date="In Progress">
-        <div class="cert-thumb"><img src="cert-2.jpg" alt="CCNA"></div>
-        <div class="cert-body"><h3>CCNA</h3><span class="badge badge-progress">In Progress</span></div>
-      </div>
-      <div class="cert-card card" data-cert="ccnp" data-offered="Cisco" data-date="Planned">
-        <div class="cert-thumb"><img src="cert-3.jpg" alt="CCNP"></div>
-        <div class="cert-body"><h3>CCNP</h3><span class="badge badge-planned">Planned</span></div>
-      </div>
-      <div class="cert-card card" data-cert="securityplus" data-offered="CompTIA" data-date="Planned">
-        <div class="cert-thumb"><img src="cert-4.jpg" alt="CompTIA Security+"></div>
+
+      <article class="cert-card card" data-cert="networking" data-offered="Cisco Networking Academy" data-date="14 Feb 2026" data-status="Completed" data-description="Networking fundamentals covering core networking concepts, connectivity, devices, and basic network communication.">
+        <div class="cert-thumb"><img src="Networking Basics.jpg" alt="Networking Basics certificate" loading="lazy"></div>
+        <div class="cert-body"><h3>Networking Basics</h3><span class="badge badge-done">Completed</span></div>
+      </article>
+
+      <article class="cert-card card" data-cert="cybersecurity" data-offered="Cisco Networking Academy" data-date="14 Feb 2026" data-status="Completed" data-description="Introduction to cybersecurity concepts, threats, security principles, and the importance of protecting digital systems and information.">
+        <div class="cert-thumb"><img src="Introduction to Cybersecurity.jpg" alt="Introduction to Cybersecurity certificate" loading="lazy"></div>
+        <div class="cert-body"><h3>Introduction to Cybersecurity</h3><span class="badge badge-done">Completed</span></div>
+      </article>
+
+      <article class="cert-card card" data-cert="python" data-offered="Cisco Networking Academy" data-date="20 Aug 2025" data-status="Completed" data-description="Python fundamentals covering basic syntax, variables, data types, conditions, loops, functions, and introductory programming concepts.">
+        <div class="cert-thumb"><img src="Python Essentials.jpg" alt="Python Essentials 1 certificate" loading="lazy"></div>
+        <div class="cert-body"><h3>Python Essentials 1</h3><span class="badge badge-done">Completed</span></div>
+      </article>
+
+      <article class="cert-card card" data-cert="CCNA Training" data-offered="Corvit Systems Rawalpindi" data-date="28 May 2026" data-status="Completed" data-description="Hands-on CCNA training covering routing, switching, IP addressing, VLANs, Cisco CLI configuration, network connectivity, and troubleshooting.">
+        <div class="cert-thumb"><img src="CCNA Training.jpg" alt="CCNA Training" loading="lazy"></div>
+        <div class="cert-body"><h3>CCNA Training</h3><span class="badge badge-done">Completed</span></div>
+      </article>
+
+      <article class="cert-card card" data-cert="CCNP Security" data-offered="Cisco" data-date="In Progress" data-status="In Progress" data-description="CCNP Enterprise preparation focused on advanced enterprise networking, routing, switching, infrastructure, and troubleshooting.">
+        <div class="cert-thumb"><img src="cert-3.jpg" alt="CCNP Security" loading="lazy"></div>
+        <div class="cert-body"><h3>CCNP Security</h3><span class="badge badge-progress">In Progress</span></div>
+      </article>
+
+      <article class="cert-card card" data-cert="securityplus" data-offered="CompTIA" data-date="Planned" data-status="Planned" data-description="Planned certification to strengthen foundational cybersecurity knowledge, security operations, risk management, and defensive security concepts.">
+        <div class="cert-thumb"><img src="cert-4.jpg" alt="CompTIA Security+" loading="lazy"></div>
         <div class="cert-body"><h3>CompTIA Security+</h3><span class="badge badge-planned">Planned</span></div>
-      </div>
-      <div class="cert-card card" data-cert="lfcs" data-offered="Linux Foundation" data-date="Planned">
-        <div class="cert-thumb"><img src="cert-5.jpg" alt="Linux/LFCS"></div>
-        <div class="cert-body"><h3>Linux/LFCS</h3><span class="badge badge-planned">Planned</span></div>
-      </div>
-      <div class="cert-card card" data-cert="btl1" data-offered="Security Blue Team" data-date="Planned">
-        <div class="cert-thumb"><img src="cert-6.jpg" alt="BTL1"></div>
+      </article>
+
+      <article class="cert-card card" data-cert="lfcs" data-offered="Linux Foundation" data-date="Planned" data-status="Planned" data-description="Planned Linux certification focused on practical Linux system administration and command-line skills.">
+        <div class="cert-thumb"><img src="cert-5.jpg" alt="Linux Foundation Certified System Administrator" loading="lazy"></div>
+        <div class="cert-body"><h3>LFCS</h3><span class="badge badge-planned">Planned</span></div>
+      </article>
+
+      <article class="cert-card card" data-cert="btl1" data-offered="Security Blue Team" data-date="Planned" data-status="Planned" data-description="Planned practical blue-team certification focused on defensive security, investigation, monitoring, and incident-response skills.">
+        <div class="cert-thumb"><img src="cert-6.jpg" alt="Blue Team Level 1" loading="lazy"></div>
         <div class="cert-body"><h3>BTL1</h3><span class="badge badge-planned">Planned</span></div>
-      </div>
-      <div class="cert-card card" data-cert="sc200" data-offered="Microsoft" data-date="Planned">
-        <div class="cert-thumb"><img src="cert-7.jpg" alt="SC-200"></div>
+      </article>
+
+      <article class="cert-card card" data-cert="sc200" data-offered="Microsoft" data-date="Planned" data-status="Planned" data-description="Planned Microsoft Security Operations Analyst certification focused on security monitoring, investigation, and response.">
+        <div class="cert-thumb"><img src="cert-7.jpg" alt="Microsoft SC-200" loading="lazy"></div>
         <div class="cert-body"><h3>SC-200</h3><span class="badge badge-planned">Planned</span></div>
-      </div>
-      <div class="cert-card card" data-cert="splunkwazuh" data-offered="Practical / Lab" data-date="Planned">
-        <div class="cert-thumb"><img src="cert-8.jpg" alt="Practical Splunk/Wazuh"></div>
-        <div class="cert-body"><h3>Practical Splunk/Wazuh</h3><span class="badge badge-planned">Planned</span></div>
-      </div>
-      <div class="cert-card card" data-cert="sc200" data-offered="Microsoft" data-date="Planned">
-        <div class="cert-thumb"><img src="cert-7.jpg" alt="SC-200"></div>
+      </article>
+
+      <article class="cert-card card" data-cert="splunkwazuh" data-offered="Practical / Lab" data-date="Planned" data-status="Planned" data-description="Planned hands-on SIEM practice using Splunk and Wazuh for log analysis, monitoring, detection, and security operations.">
+        <div class="cert-thumb"><img src="cert-8.jpg" alt="Practical Splunk and Wazuh" loading="lazy"></div>
+        <div class="cert-body"><h3>Practical Splunk / Wazuh</h3><span class="badge badge-planned">Planned</span></div>
+      </article>
+
+      <article class="cert-card card" data-cert="awssecurity" data-offered="AWS" data-date="Planned" data-status="Planned" data-description="Planned AWS security learning path focused on cloud security fundamentals, identity, monitoring, and secure cloud infrastructure.">
+        <div class="cert-thumb cert-thumb-placeholder"><span>AWS Security</span></div>
         <div class="cert-body"><h3>AWS Security</h3><span class="badge badge-planned">Planned</span></div>
-      </div>
-      <div class="cert-card card" data-cert="sc200" data-offered="Microsoft" data-date="Planned">
-        <div class="cert-thumb"><img src="cert-7.jpg" alt="SC-200"></div>
-        <div class="cert-body"><h3>ejpt</h3><span class="badge badge-planned">Planned</span></div>
-      </div>
-      <div class="cert-card card" data-cert="sc200" data-offered="Microsoft" data-date="Planned">
-        <div class="cert-thumb"><img src="cert-7.jpg" alt="SC-200"></div>
+      </article>
+
+      <article class="cert-card card" data-cert="ejpt" data-offered="INE / eLearnSecurity" data-date="Planned" data-status="Planned" data-description="Planned practical penetration-testing certification focused on reconnaissance, enumeration, exploitation, and reporting.">
+        <div class="cert-thumb cert-thumb-placeholder"><span>eJPT</span></div>
+        <div class="cert-body"><h3>eJPT</h3><span class="badge badge-planned">Planned</span></div>
+      </article>
+
+      <article class="cert-card card" data-cert="pnpt" data-offered="TCM Security" data-date="Planned" data-status="Planned" data-description="Planned practical penetration-testing certification covering real-world offensive security methodology and reporting.">
+        <div class="cert-thumb cert-thumb-placeholder"><span>PNPT</span></div>
         <div class="cert-body"><h3>PNPT</h3><span class="badge badge-planned">Planned</span></div>
-      </div>
-      <div class="cert-card card" data-cert="sc200" data-offered="Microsoft" data-date="Planned">
-        <div class="cert-thumb"><img src="cert-7.jpg" alt="SC-200"></div>
+      </article>
+
+      <article class="cert-card card" data-cert="oscp" data-offered="OffSec" data-date="Planned" data-status="Planned" data-description="Long-term planned offensive-security certification focused on hands-on penetration testing and practical exploitation skills.">
+        <div class="cert-thumb cert-thumb-placeholder"><span>OSCP</span></div>
         <div class="cert-body"><h3>OSCP</h3><span class="badge badge-planned">Planned</span></div>
-      </div>
-      <div class="cert-card card" data-cert="sc200" data-offered="Microsoft" data-date="Planned">
-        <div class="cert-thumb"><img src="cert-7.jpg" alt="SC-200"></div>
-        <div class="cert-body"><h3>CISSP</h3><span class="badge badge-planned">In Future</span></div>
-      </div>
+      </article>
+
+      <article class="cert-card card" data-cert="cissp" data-offered="ISC2" data-date="Future" data-status="Future Goal" data-description="Long-term future goal for advanced cybersecurity knowledge and professional development.">
+        <div class="cert-thumb cert-thumb-placeholder"><span>CISSP</span></div>
+        <div class="cert-body"><h3>CISSP</h3><span class="badge badge-planned">Future Goal</span></div>
+      </article>
+
     </div>
   </div>
 </section>
@@ -367,8 +394,9 @@
 <!-- ================= CERTIFICATION MODAL ================= -->
 <div class="cert-modal" id="certModal" aria-hidden="true">
   <div class="cert-modal-box" role="dialog" aria-modal="true">
-    <button class="cert-modal-close" id="certModalClose" aria-label="Close">×</button>
+    <button type="button" class="cert-modal-close" id="certModalClose" aria-label="Close certification details">×</button>
     <img class="cert-modal-image" id="certModalImage" src="" alt="">
+    <div class="cert-modal-empty" id="certModalEmpty">Certificate image not available yet.</div>
     <h3 class="cert-modal-title" id="certModalTitle"></h3>
     <div class="cert-details">
       <div class="cert-detail"><span class="label">Offered by</span><span class="value" id="certOfferedBy"></span></div>
@@ -385,21 +413,54 @@
     <div class="sec-head">
       <div class="sec-eyebrow">Internships</div>
       <h2 class="sec-title">Real-world exposure.</h2>
-      <p class="sec-desc">Add your internships here as you take them on.</p>
+      <p class="sec-desc">Hands-on experience gained through networking labs, Cisco equipment, and practical troubleshooting.</p>
     </div>
     <div class="timeline">
       <div class="t-item">
-        <div class="t-date">Add dates</div>
-        <div class="t-title">Internship Title</div>
-        <div class="t-org">Company / Organization Name</div>
-        <div class="t-desc">Short description of what you worked on, tools used, and what you learned.</div>
+        <div class="t-date">1 Aug 2026 — 1 Sep 2026</div>
+        <div class="t-title">Network Support / CCNA Intern</div>
+        <div class="t-org">Corvit Systems Rawalpindi</div>
+        <div class="t-desc">Completed a hands-on CCNA internship, gaining practical experience with Cisco routers, switches, CLI configuration, VLANs, routing, IP addressing, and network troubleshooting.</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ATTENDED WORKSHOPS ================= -->
+<section id="workshops">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">Workshops</div>
+      <h2 class="sec-title">Learning beyond the classroom.</h2>
+      <p class="sec-desc">
+        Cybersecurity and networking workshops attended to strengthen practical knowledge,
+        awareness, and hands-on skills.
+      </p>
+    </div>
+
+    <div class="timeline">
+
       <div class="t-item">
-        <div class="t-date">Add dates</div>
-        <div class="t-title">Internship Title</div>
-        <div class="t-org">Company / Organization Name</div>
-        <div class="t-desc">Short description of what you worked on, tools used, and what you learned.</div>
+        <div class="t-date">14 Sep 2026 — 16 Sep 2026</div>
+        <div class="t-title">Cybersecurity Workshop</div>
+        <div class="t-org">Digital Pakistan Cybersecurity Hackathon 2026</div>
+        <div class="t-desc">
+         Participating in a 3-day pre-CTF cybersecurity workshop focused on building practical cybersecurity skills and preparing for Capture The Flag (CTF) challenges. The workshop covers cybersecurity fundamentals, ethical hacking concepts, reconnaissance, security problem-solving, and practical techniques used in CTF environments.
+        </div>
       </div>
+
+      <div class="t-item">
+        <div class="t-date">2026</div>
+        <div class="t-title">Cyber Hackathon Workshop</div>
+        <div class="t-org">Cybersecurity &amp; CTF Preparation</div>
+        <div class="t-desc">
+          Participated in a cybersecurity workshop focused on problem-solving, Capture The
+          Flag concepts, security challenges, and developing practical cybersecurity skills.
+        </div>
+      </div>
+
+      <!-- Add more workshops here -->
+
     </div>
   </div>
 </section>
@@ -473,63 +534,153 @@
 </footer>
 
 <script>
-  const toggle = document.getElementById('navtoggle');
-  const links = document.getElementById('navlinks');
+'use strict';
+
+/* ================= MOBILE NAV ================= */
+const toggle = document.getElementById('navtoggle');
+const links = document.getElementById('navlinks');
+
+if (toggle && links) {
   toggle.addEventListener('click', () => {
-    const open = links.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', open);
+    const isOpen = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(isOpen));
   });
-  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    links.classList.remove('open');
-    toggle.setAttribute('aria-expanded', 'false');
-  }));
 
-  const certData = {
-    networking:{title:'Networking Basics',image:'Networking Basics.jpg',offered:'Cisco Networking Academy',date:'Add completion date',status:'Completed',description:'Networking fundamentals and core networking concepts.'},
-    ccna:{title:'CCNA',image:'cert-2.jpg',offered:'Cisco',date:'In Progress',status:'In Progress',description:'Routing, switching, IP addressing and networking fundamentals.'},
-    ccnp:{title:'CCNP',image:'cert-3.jpg',offered:'Cisco',date:'Planned',status:'Planned',description:'Advanced enterprise networking certification path.'},
-    securityplus:{title:'CompTIA Security+',image:'cert-4.jpg',offered:'CompTIA',date:'Planned',status:'Planned',description:'Core cybersecurity concepts and security fundamentals.'},
-    lfcs:{title:'Linux/LFCS',image:'cert-5.jpg',offered:'Linux Foundation',date:'Planned',status:'Planned',description:'Linux system administration and practical Linux skills.'},
-    btl1:{title:'BTL1',image:'cert-6.jpg',offered:'Security Blue Team',date:'Planned',status:'Planned',description:'Blue-team and practical defensive security skills.'},
-    sc200:{title:'SC-200',image:'cert-7.jpg',offered:'Microsoft',date:'Planned',status:'Planned',description:'Security operations and Microsoft security monitoring.'},
-    splunkwazuh:{title:'Practical Splunk/Wazuh',image:'cert-8.jpg',offered:'Practical / Lab',date:'Planned',status:'Planned',description:'Hands-on SIEM, log monitoring and security operations practice.'}
-  };
-
-  const certModal=document.getElementById('certModal');
-  const certModalImage=document.getElementById('certModalImage');
-  const certModalTitle=document.getElementById('certModalTitle');
-  const certOfferedBy=document.getElementById('certOfferedBy');
-  const certDate=document.getElementById('certDate');
-  const certStatus=document.getElementById('certStatus');
-  const certDescription=document.getElementById('certDescription');
-
-  document.querySelectorAll('.cert-card').forEach(card=>{
-    card.addEventListener('click',()=>{
-      const d=certData[card.dataset.cert];
-      if(!d) return;
-      certModalImage.src=d.image;
-      certModalImage.alt=d.title;
-      certModalTitle.textContent=d.title;
-      // Edit these directly on each cert-card: data-offered="..." and data-date="..."
-       certOfferedBy.textContent=card.dataset.offered || 'Add offered by';
-       certDate.textContent=card.dataset.date || 'Add completion date';
-      certStatus.textContent=d.status;
-      certDescription.textContent=d.description;
-      certModal.classList.add('open');
-      certModal.setAttribute('aria-hidden','false');
-      document.body.style.overflow='hidden';
+  links.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      links.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
     });
   });
+}
 
-  function closeCertModal(){
-    certModal.classList.remove('open');
-    certModal.setAttribute('aria-hidden','true');
-    document.body.style.overflow='';
+/* ================= CERTIFICATION MODAL ================= */
+const certModal = document.getElementById('certModal');
+const certModalBox = certModal?.querySelector('.cert-modal-box');
+const certModalClose = document.getElementById('certModalClose');
+const certModalImage = document.getElementById('certModalImage');
+const certModalEmpty = document.getElementById('certModalEmpty');
+const certModalTitle = document.getElementById('certModalTitle');
+const certOfferedBy = document.getElementById('certOfferedBy');
+const certDate = document.getElementById('certDate');
+const certStatus = document.getElementById('certStatus');
+const certDescription = document.getElementById('certDescription');
+
+let lastFocusedCard = null;
+
+function setModalImage(src, title) {
+  if (!certModalImage || !certModalEmpty) return;
+
+  certModalImage.classList.remove('hidden');
+  certModalEmpty.classList.remove('show');
+
+  if (!src) {
+    certModalImage.removeAttribute('src');
+    certModalImage.alt = '';
+    certModalImage.classList.add('hidden');
+    certModalEmpty.classList.add('show');
+    return;
   }
-  document.getElementById('certModalClose').addEventListener('click',closeCertModal);
-  certModal.addEventListener('click',e=>{if(e.target===certModal) closeCertModal();});
-  document.addEventListener('keydown',e=>{if(e.key==='Escape') closeCertModal();});
 
+  certModalImage.src = src;
+  certModalImage.alt = title || 'Certification';
+}
+
+certModalImage?.addEventListener('error', () => {
+  certModalImage.classList.add('hidden');
+  certModalEmpty?.classList.add('show');
+});
+
+function openCertModal(card) {
+  if (!certModal || !card) return;
+
+  lastFocusedCard = card;
+
+  /* All information comes directly from the clicked card.
+     This prevents one certificate from accidentally opening another certificate's data. */
+  const title = card.querySelector('h3')?.textContent?.trim() || 'Certification';
+  const offered = card.dataset.offered?.trim() || 'Not specified';
+  const date = card.dataset.date?.trim() || 'Not specified';
+  const status = card.dataset.status?.trim() ||
+                 card.querySelector('.badge')?.textContent?.trim() ||
+                 'Not specified';
+  const description = card.dataset.description?.trim() ||
+                      'Certification details will be added soon.';
+  const image = card.querySelector('.cert-thumb img')?.getAttribute('src') || '';
+
+  setModalImage(image, title);
+
+  if (certModalTitle) certModalTitle.textContent = title;
+  if (certOfferedBy) certOfferedBy.textContent = offered;
+  if (certDate) certDate.textContent = date;
+  if (certStatus) certStatus.textContent = status;
+  if (certDescription) certDescription.textContent = description;
+
+  certModal.classList.add('open');
+  certModal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+
+  if (certModalBox) certModalBox.scrollTop = 0;
+  requestAnimationFrame(() => certModalClose?.focus());
+}
+
+function closeCertModal() {
+  if (!certModal) return;
+
+  certModal.classList.remove('open');
+  certModal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+
+  if (lastFocusedCard) {
+    lastFocusedCard.focus();
+    lastFocusedCard = null;
+  }
+}
+
+document.querySelectorAll('.cert-card').forEach(card => {
+  card.setAttribute('tabindex', '0');
+  card.setAttribute('role', 'button');
+
+  card.addEventListener('click', () => openCertModal(card));
+
+  card.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      openCertModal(card);
+    }
+  });
+});
+
+certModalClose?.addEventListener('click', closeCertModal);
+
+certModal?.addEventListener('click', event => {
+  if (event.target === certModal) closeCertModal();
+});
+
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' &&
+      certModal?.getAttribute('aria-hidden') === 'false') {
+    closeCertModal();
+  }
+});
+
+/* Prevent clicks inside the dialog from bubbling to the overlay. */
+certModalBox?.addEventListener('click', event => event.stopPropagation());
+
+/* ================= CERTIFICATE THUMBNAIL FALLBACK ================= */
+document.querySelectorAll('.cert-thumb img').forEach(img => {
+  img.addEventListener('error', () => {
+    const wrapper = img.closest('.cert-thumb');
+    if (!wrapper) return;
+
+    img.remove();
+    wrapper.classList.add('cert-thumb-placeholder');
+
+    if (!wrapper.textContent.trim()) {
+      wrapper.textContent = 'Certificate image unavailable';
+    }
+  });
+});
 </script>
 
 </body>
